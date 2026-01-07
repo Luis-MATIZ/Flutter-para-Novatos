@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Listview1Screen extends StatelessWidget {
+class Listview2Screen extends StatelessWidget {
   final options = ['Megaman', 'Metal Gear', 'Super Smash', 'Final Fantasy'];
-  Listview1Screen({super.key});
+  Listview2Screen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +15,14 @@ class Listview1Screen extends StatelessWidget {
         ),
         backgroundColor: Colors.red,
       ),
-      body: ListView(
-        children: [
-          //Los ... son el operador spread y sirve para desplegar una lista dentro de otra
-          ...options.map(
-            (e) => ListTile(title: Text(e), trailing: Icon(Icons.arrow_right)),
-          ),
-        ],
+      body: ListView.separated(
+        itemBuilder: (context, index) => ListTile(
+          title: Text(options[index]),
+          trailing: Icon(Icons.arrow_forward_ios_outlined),
+          onTap: () => print('Ha presionado ${options[index]}'),
+        ),
+        separatorBuilder: (_, __) => Divider(),
+        itemCount: options.length,
       ),
     );
   }
