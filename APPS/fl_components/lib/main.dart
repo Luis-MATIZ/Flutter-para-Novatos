@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fl_components/screens/listview2_screen.dart';
+
+import 'package:fl_components/router/app_routes.dart';
 
 void main() => runApp(const MyApp());
 
@@ -11,7 +12,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      home: Listview2Screen(),
+      initialRoute: AppRoutes.initialRoute,
+      routes: AppRoutes.getAppRoutes(),
+      //Cuando no existe la ruta con onGenerateRoute ponemos una por defecto para que entre
+      onGenerateRoute: AppRoutes.onGenerateRoute,
     );
   }
 }
