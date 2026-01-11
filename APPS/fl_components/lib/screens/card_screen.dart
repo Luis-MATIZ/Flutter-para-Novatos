@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/widgets.dart';
+
 class CardScreen extends StatelessWidget {
   const CardScreen({super.key});
 
@@ -8,11 +10,8 @@ class CardScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('Tarjetas')),
       body: ListView(
-        children: [
-          Card(
-            child: Column(children: [ListTile(title: Text('Soy un título'))]),
-          ),
-        ],
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        children: [CustomCardType1(), SizedBox(height: 10), CustomCardType2()],
       ),
     );
   }
