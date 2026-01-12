@@ -18,7 +18,18 @@ class HomeScreen extends StatelessWidget {
           ),
           title: Text(AppRoutes.menuOptions[index].name),
           onTap: () {
-            Navigator.pushNamed(context, AppRoutes.menuOptions[index].route);
+            // 1. Obtenemos la ruta a la que queremos ir
+            final targetRoute = AppRoutes.menuOptions[index].route;
+
+            // 2. Obtenemos el nombre de la ruta donde estamos parados actualmente
+            final currentRoute = ModalRoute.of(context)?.settings.name;
+
+            // 3. Comparamos. Si son iguales, salimos de la función sin hacer nada
+            if (currentRoute == targetRoute) return;
+
+            // 4. Si son diferentes, navegamos
+            Navigator.pushNamed(context, targetRoute);
+            //Navigator.pushNamed(context, AppRoutes.menuOptions[index].route);
           },
         ),
         separatorBuilder: (_, __) => Divider(),

@@ -17,6 +17,7 @@ class Listview2Screen extends StatelessWidget {
             Icons.arrow_forward_ios_outlined,
             color: AppTheme.primary,
           ),
+          // ignore: avoid_print
           onTap: () => print('Ha presionado ${options[index]}'),
         ),
         separatorBuilder: (_, __) => Divider(),
