@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:fl_components/widgets/widgets.dart';
 
 class InputsScreen extends StatelessWidget {
-  const InputsScreen({super.key});
+  final String? hintText;
+  final String? labelText;
+  final String? helperText;
+
+  const InputsScreen({
+    super.key,
+    this.hintText,
+    this.labelText,
+    this.helperText,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -10,36 +20,7 @@ class InputsScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsetsGeometry.symmetric(horizontal: 20, vertical: 10),
-          child: Column(
-            children: [
-              TextFormField(
-                autofocus: false,
-                initialValue: 'Luis',
-                textCapitalization: TextCapitalization.words,
-                // ignore: avoid_print
-                onChanged: (value) => print('El valor es $value'),
-                validator: (value) {
-                  if (value == null) return 'Este campo es requerido';
-                  return value.length < 3 ? 'Mínimo de 3 letras' : null;
-                },
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                decoration: InputDecoration(
-                  hintText: 'Nombre de usuario',
-                  labelText: 'Nombre de usuario',
-                  helperText: 'Solo letras',
-                  counterText: '3 caracteres',
-                  prefixIcon: Icon(Icons.verified_user_outlined),
-                  suffixIcon: Icon(Icons.group_outlined),
-                  icon: Icon(Icons.assignment_ind_outlined),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(10),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+          child: Column(children: [CustomInputField()]),
         ),
       ),
     );
