@@ -1,29 +1,52 @@
 import 'package:flutter/material.dart';
 
 class CustomInputField extends StatelessWidget {
-  const CustomInputField({super.key});
+  final String? hintText;
+  final String? labelText;
+  final String? helperText;
+  final IconData? icon;
+  final IconData? suffixIcon;
+  final TextInputType? keyBoardType;
+  final bool obscureText;
+  final String formProperty;
+  final Map<String, String> formValues;
+
+  const CustomInputField({
+    super.key,
+    this.hintText,
+    this.labelText,
+    this.helperText,
+    this.icon,
+    this.suffixIcon,
+    this.keyBoardType,
+    this.obscureText = false,
+    required this.formProperty,
+    required this.formValues,
+  });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       autofocus: false,
-      initialValue: 'Luis',
+      //initialValue: 'Luis',
       textCapitalization: TextCapitalization.words,
       // ignore: avoid_print
-      onChanged: (value) => print('El valor es $value'),
+      onChanged: (value) => formValues[formProperty] = value,
       validator: (value) {
         if (value == null) return 'Este campo es requerido';
         return value.length < 3 ? 'Mínimo de 3 letras' : null;
       },
       autovalidateMode: AutovalidateMode.onUserInteraction,
+      keyboardType: keyBoardType,
+      obscureText: obscureText,
       decoration: InputDecoration(
-        hintText: 'Nombre de usuario',
-        labelText: 'Nombre de usuario',
-        helperText: 'Solo letras',
-        counterText: '3 caracteres',
-        prefixIcon: Icon(Icons.verified_user_outlined),
-        suffixIcon: Icon(Icons.group_outlined),
-        icon: Icon(Icons.assignment_ind_outlined),
+        hintText: hintText,
+        labelText: labelText,
+        helperText: helperText,
+        //counterText: '3 caracteres',
+        //prefixIcon: Icon(Icons.verified_user_outlined),
+        suffixIcon: suffixIcon != null ? Icon(suffixIcon) : null,
+        icon: icon != null ? Icon(icon) : null,
       ),
     );
   }

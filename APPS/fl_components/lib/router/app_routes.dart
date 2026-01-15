@@ -48,6 +48,18 @@ class AppRoutes {
       screen: InputsScreen(),
       icon: Icons.input_rounded,
     ),
+    MenuOption(
+      route: 'sliders',
+      name: 'Sliders and Check',
+      screen: SliderScreen(),
+      icon: Icons.slow_motion_video_outlined,
+    ),
+    MenuOption(
+      route: 'listviewbuilder',
+      name: 'InfiniteScrol and Pull to Refresh',
+      screen: ListViewBuilderScreen(),
+      icon: Icons.build_circle,
+    ),
   ];
 
   static Map<String, Widget Function(BuildContext)> getAppRoutes() {
